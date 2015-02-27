@@ -10,7 +10,7 @@ trait SExpressionsParser extends RegexParsers {
   case class SInt(i: Int) extends Node
   case class SIdentifier(s: String) extends Node
 
-  protected lazy val int = "[0-9]+".r ^^ { (i: String) => SInt(i.toInt) }
+  protected lazy val int = "[0-9]+".r ^^ { i => SInt(i.toInt) }
   protected lazy val identifier = regex("""[A-Za-z+-/\*]+""".r) ^^ { si => SIdentifier(si) }
   protected lazy val sexpression = "(" ~> rep(node) <~ ")" ^^ SExpression
   protected lazy val node: Parser[Node] = int | identifier | sexpression
