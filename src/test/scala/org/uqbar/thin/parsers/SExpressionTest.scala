@@ -11,11 +11,11 @@ class SExpressionTest extends ParserTest with SExpressionsParser {
       }
 
       "simple sum expression" in {
-        "(+ 3 4)" should beParsedTo(SExpression(List(SIdentifier("+"), SInt(3), SInt(4))))(sexpression)
+        "(+ 3 4)" should beParsedTo(SExpression(List(SOperation("+"), SInt(3), SInt(4))))(sexpression)
       }
       
       "simple recursive expression" in {
-        "(+ 3 (* 3 1))" should beParsedTo(SExpression(List(SIdentifier("+"), SInt(3), SExpression(List(SIdentifier("*"), SInt(3), SInt(1))))))(sexpression)
+        "(+ 3 (* 3 1))" should beParsedTo(SExpression(List(SOperation("+"), SInt(3), SExpression(List(SOperation("*"), SInt(3), SInt(1))))))(sexpression)
       }
     }
   }

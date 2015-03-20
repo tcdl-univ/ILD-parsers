@@ -5,8 +5,8 @@ import scala.util.parsing.combinator._
 object JsonParser extends JsonParser
 trait JsonParser extends RegexParsers {
 
-	case class P(key: String, value: V)
 	trait V
+	case class P(key: String, value: V)
 	case class N(value: Double) extends V
 	case class S(value: String) extends V
 	case class Z(value: Boolean) extends V
