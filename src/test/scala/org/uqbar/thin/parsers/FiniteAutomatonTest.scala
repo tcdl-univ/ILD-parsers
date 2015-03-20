@@ -19,7 +19,7 @@ class FiniteAutomatonTest extends FreeSpec with Matchers {
 //      val abAutomaton = FinitAutomaton(nodeA)
       
       val nodeA = normalNode('a') = normalNode('b') = finalNode
-      val abAutomaton = FinitAutomaton(nodeA)
+      val abAutomaton = FiniteAutomaton(nodeA)
       
       "ab matches" in {
     		abAutomaton("ab") should be(true)
@@ -33,7 +33,7 @@ class FiniteAutomatonTest extends FreeSpec with Matchers {
     "abInfiniteAutomaton should" - {
       val initialNode = finalNode
       initialNode('a') = initialNode('b') = initialNode
-      val abInfiniteAutomaton = FinitAutomaton(initialNode)
+      val abInfiniteAutomaton = FiniteAutomaton(initialNode)
       
       "bababababab matches" in {
         abInfiniteAutomaton("bababababab") should be(true)

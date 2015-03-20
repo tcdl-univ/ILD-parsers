@@ -2,7 +2,7 @@ package org.uqbar.thin.parsers
 
 import scala.collection.mutable.Map
 
-case class FinitAutomaton(initialState: Node) {
+case class FiniteAutomaton(initialState: Node) {
   
   def apply(word: String): Boolean = {
     initialState(word.toList).isFinal
