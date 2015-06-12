@@ -12,9 +12,9 @@ trait SExpressionsParser extends RegexParsers {
   case class SIdentifier(s: String) extends Node
 
   protected lazy val int = "[0-9]+".r ^^ { i => SInt(i.toInt) }
-  protected lazy val operation = regex("""[+-/\*]""".r) ^^ SOperation
-  protected lazy val identifier = regex("""[A-Za-z+]+""".r) ^^ SIdentifier
-  protected lazy val sexpression = "(" ~> node.* <~ ")" ^^ SExpression
+  protected lazy val operation = """[+-/\*]""".r ^^ SOperation
+  protected lazy val identifier = """[A-Za-z+]+""" ^^ SIdentifier
+  protected lazy val sexpression = "(" ~> node.* <~ ")" ^^ { case  nodes => SExpression(nodes)}
   protected lazy val node: Parser[Node] = int | operation | identifier | sexpression
 
   def apply(input: String) = parseAll(sexpression, input) match {
